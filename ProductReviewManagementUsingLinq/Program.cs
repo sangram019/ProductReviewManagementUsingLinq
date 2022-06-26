@@ -64,6 +64,9 @@ namespace ProductReviewManagementUsingLinq
                 case 5:
                     management.RetriveProductIdOrReview(productReviewList);
                     break;
+                case 6:
+                    management.SkipTop5Records(productReviewList);
+                    break;
                 default:
                     Console.WriteLine("Please choose the correct option!");
                     break;
