@@ -61,6 +61,9 @@ namespace ProductReviewManagementUsingLinq
                 case 4:
                     management.CountRecordsbyProductID(productReviewList);
                     break;
+                case 5:
+                    management.RetriveProductIdOrReview(productReviewList);
+                    break;
                 default:
                     Console.WriteLine("Please choose the correct option!");
                     break;
