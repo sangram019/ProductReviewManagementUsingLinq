@@ -40,11 +40,9 @@ namespace ProductReviewManagementUsingLinq
             productReviewList.Add(new ProductReview() { ProductID = 24, UserID = 12, Rating = 3, Review = "Bad", isLike = true });
             productReviewList.Add(new ProductReview() { ProductID = 25, UserID = 12, Rating = 6, Review = "Good", isLike = false });
 
-           
 
 
-
-            Console.WriteLine("Select \n1)Create ProductReview Class with 25 Default values\n2)Retrive Top 3 Records of Top 3 Rating Values\n3)Details from Records(1,4,9) with rating>3 ");
+            Console.WriteLine("Select \n1)Create ProductReview Class with 25 Default values\n2)Retrive Top 3 Records of Top 3 Rating Values\n3)Details from Records(1,4,9) with rating>3\n4)count review of each product id ");
             int option = Convert.ToInt16(Console.ReadLine());
             switch (option)
             {
@@ -59,6 +57,9 @@ namespace ProductReviewManagementUsingLinq
                     break;
                 case 3:
                     management.RetriveRecords(productReviewList);
+                    break;
+                case 4:
+                    management.CountRecordsbyProductID(productReviewList);
                     break;
                 default:
                     Console.WriteLine("Please choose the correct option!");
