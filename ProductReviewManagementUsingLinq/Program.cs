@@ -1,5 +1,4 @@
-﻿// See https://aka.ms/new-console-template for more information
-using System;
+﻿using System;
 using System.Linq;
 using System.Collections.Generic;
 
@@ -10,6 +9,8 @@ namespace ProductReviewManagementUsingLinq
         static void Main(string[] args)
         {
             Console.WriteLine("Welcome To Product Review Management");
+            Management management = new Management();
+
 
             List<ProductReview> productReviewList = new List<ProductReview>();
 
@@ -39,15 +40,31 @@ namespace ProductReviewManagementUsingLinq
             productReviewList.Add(new ProductReview() { ProductID = 24, UserID = 12, Rating = 3, Review = "Bad", isLike = true });
             productReviewList.Add(new ProductReview() { ProductID = 25, UserID = 12, Rating = 6, Review = "Good", isLike = false });
 
-            //Display list
-            //foreach (var list in productReviewList)
-            //{
-            //    Console.WriteLine("ProductID :" + list.ProductID + "  " + "UserID :" + list.UserID + "  " + "Rating :" + list.Rating + "  " + "Review :" + list.Review + "  " + "isLike :" + list.isLike);
-            //}
-            Management management = new Management();
-            management.TopRecords(productReviewList);
+           
+
+
+
+            Console.WriteLine("Select \n1)Create ProductReview Class with 25 Default values\n2)Retrive Top 3 Records of Top 3 Rating Values\n3)Details from Records(1,4,9) with rating>3 ");
+            int option = Convert.ToInt16(Console.ReadLine());
+            switch (option)
+            {
+                case 1:
+                    foreach (var list in productReviewList)
+                    {
+                        Console.WriteLine("ProductID :" + list.ProductID + "  " + "UserID :" + list.UserID + "  " + "Rating :" + list.Rating + "  " + "Review :" + list.Review + "  " + "isLike :" + list.isLike);
+                    }
+                    break;
+                case 2:
+                    management.TopRecords(productReviewList);
+                    break;
+                case 3:
+                    management.RetriveRecords(productReviewList);
+                    break;
+                default:
+                    Console.WriteLine("Please choose the correct option!");
+                    break;
+            }
         }
     }
 
 }
-    
