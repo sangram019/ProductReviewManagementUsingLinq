@@ -67,6 +67,9 @@ namespace ProductReviewManagementUsingLinq
                 case 6:
                     management.SkipTop5Records(productReviewList);
                     break;
+                case 7:
+                    management.Datatables();
+                    break;
                 default:
                     Console.WriteLine("Please choose the correct option!");
                     break;
