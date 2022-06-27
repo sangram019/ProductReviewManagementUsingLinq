@@ -71,13 +71,14 @@ namespace ProductReviewManagementUsingLinq
 
         public void Datatables()
         {
+            
             DataTable dt = new DataTable();
             dt.Columns.Add("ProductId");
             dt.Columns.Add("UserId");
             dt.Columns.Add("Rating");
             dt.Columns.Add("Review");
             dt.Columns.Add("Islike");
-            //created row
+            
             dt.Rows.Add("1", "1", "1", "Bad", "False");
             dt.Rows.Add("2", "1", "2", "BelowAverage", "False");
             dt.Rows.Add("3", "1", "3", "Average", "False");
@@ -112,8 +113,20 @@ namespace ProductReviewManagementUsingLinq
 
             foreach (DataRow row in dt.Rows)
             {
-                Console.WriteLine("-------");
+                Console.WriteLine("-----------");
                 Console.WriteLine($"{row["ProductId"]}\t|{row["UserId"]}\t|{row["Rating"]}\t|{row["Review"]}\t|{row["Islike"]}");
+            }
+        }
+
+        public void RetriveRecords_IsLike_True(List<ProductReview> productReviewList)
+        {
+            var ProductData1 = (from productReview in productReviewList
+                                where (productReview.isLike == true)
+                                select productReview);
+
+            foreach (var list in ProductData1)
+            {
+                Console.WriteLine("ProductID :" + list.ProductID + "  " + "UserID :" + list.UserID + "  " + "Rating :" + list.Rating + "  " + "Review :" + list.Review + "  " + "isLike :" + list.isLike);
             }
         }
 
