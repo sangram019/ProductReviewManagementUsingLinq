@@ -71,7 +71,6 @@ namespace ProductReviewManagementUsingLinq
 
         public void Datatables()
         {
-            
             DataTable dt = new DataTable();
             dt.Columns.Add("ProductId");
             dt.Columns.Add("UserId");
@@ -113,7 +112,7 @@ namespace ProductReviewManagementUsingLinq
 
             foreach (DataRow row in dt.Rows)
             {
-                Console.WriteLine("-----------");
+                Console.WriteLine("-------------");
                 Console.WriteLine($"{row["ProductId"]}\t|{row["UserId"]}\t|{row["Rating"]}\t|{row["Review"]}\t|{row["Islike"]}");
             }
         }
@@ -127,6 +126,18 @@ namespace ProductReviewManagementUsingLinq
             foreach (var list in ProductData1)
             {
                 Console.WriteLine("ProductID :" + list.ProductID + "  " + "UserID :" + list.UserID + "  " + "Rating :" + list.Rating + "  " + "Review :" + list.Review + "  " + "isLike :" + list.isLike);
+            }
+        }
+
+        public void AvgRating(List<ProductReview> productreviewlist)
+        {
+            foreach (var line in productreviewlist.GroupBy(info => info.ProductID).Select(group => new
+            {
+                products = group.Key,
+                Count = group.Average(a => a.Rating)
+            }))
+            {
+                Console.WriteLine("Product Id:{0} => Average Rating :{1}", line.products, line.Count);
             }
         }
 
